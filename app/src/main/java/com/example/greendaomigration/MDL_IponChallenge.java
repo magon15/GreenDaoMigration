@@ -6,6 +6,10 @@ import org.greenrobot.greendao.annotation.Generated;
 
 @Entity
 public class MDL_IponChallenge {
+
+    @Property(nameInDb = "currency")
+    private String currency;
+
     @Property(nameInDb = "piso")
     private int piso;
 
@@ -15,11 +19,38 @@ public class MDL_IponChallenge {
     @Property(nameInDb = "sinkwenta")
     private int sinkwenta;
 
-    @Generated(hash = 1607311657)
-    public MDL_IponChallenge(int piso, int bente, int sinkwenta) {
+    @Property(nameInDb = "penny")
+    private int penny;
+
+    @Property(nameInDb = "dime")
+    private int dime;
+
+    @Property(nameInDb = "quarter")
+    private int quarter;
+
+    public MDL_IponChallenge(String currency, int value1, int value2, int value3){
+        this.currency = currency;
+        if(currency.equals("PHP")){
+            this.piso = value1;
+            this.bente = value2;
+            this.sinkwenta = value3;
+        }else{
+            this.penny = value1;
+            this.dime = value2;
+            this.quarter = value3;
+        }
+    }
+
+    @Generated(hash = 1759077536)
+    public MDL_IponChallenge(String currency, int piso, int bente, int sinkwenta,
+            int penny, int dime, int quarter) {
+        this.currency = currency;
         this.piso = piso;
         this.bente = bente;
         this.sinkwenta = sinkwenta;
+        this.penny = penny;
+        this.dime = dime;
+        this.quarter = quarter;
     }
 
     @Generated(hash = 707585879)
@@ -48,5 +79,37 @@ public class MDL_IponChallenge {
 
     public void setSinkwenta(int sinkwenta) {
         this.sinkwenta = sinkwenta;
+    }
+
+    public String getCurrency() {
+        return this.currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public int getPenny() {
+        return this.penny;
+    }
+
+    public void setPenny(int penny) {
+        this.penny = penny;
+    }
+
+    public int getDime() {
+        return this.dime;
+    }
+
+    public void setDime(int dime) {
+        this.dime = dime;
+    }
+
+    public int getQuarter() {
+        return this.quarter;
+    }
+
+    public void setQuarter(int quarter) {
+        this.quarter = quarter;
     }
 }
